@@ -1,0 +1,123 @@
+/* Watercolor Floral Wedding Seating Chart (original art via SVG) */
+:root{
+  --bg: #fffaf5;
+  --card: #ffffff;
+  --ink: #2b2b2b;
+  --muted: #6b7280;
+  --accent: #9b7a6e;
+  --ring: rgba(0,0,0,.05);
+}
+
+*{box-sizing:border-box}
+
+html,body {
+  font-family: 'Lora', serif;
+  background: url("assets/floral1.svg") no-repeat center/cover fixed;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.hero{
+  text-align:center;
+  padding: 2.25rem 1rem 1.75rem;
+  background: radial-gradient(75% 75% at 10% 0%, rgba(255,192,203,0.15), transparent 55%),
+              radial-gradient(75% 75% at 100% 100%, rgba(173,216,230,0.16), transparent 55%),
+              linear-gradient(to bottom, #fffaf7, #fff6f0);
+  border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.hero h1{
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  color: var(--accent);
+  margin:0 0 .4rem 0;
+  letter-spacing:.02em;
+}
+.hero .sub{
+  color: var(--muted);
+  font-size: clamp(1rem, 2.4vw, 1.1rem);
+  margin:0;
+}
+
+.content{
+  max-width: 1200px;
+  margin: 2rem auto 3rem;
+  padding: 0 1rem;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.table-card{
+  background: var(--card);
+  border-radius: 20px;
+  padding: 1rem 1rem 1.1rem;
+  box-shadow: 0 10px 24px var(--ring);
+  position:relative;
+  overflow:hidden;
+  border: 1px solid rgba(0,0,0,.06);
+}
+
+/* Watercolor floral corner art — original SVGs */
+.table-card::before,
+.table-card::after{
+  content:"";
+  position:absolute;
+  width:140px;
+  height:140px;
+  opacity:.35;
+  pointer-events:none;
+  background-repeat:no-repeat;
+  background-size:contain;
+}
+.table-card::before{
+  top:-18px; left:-18px;
+  background-image:url('assets/floral1.svg');
+}
+.table-card::after{
+  bottom:-18px; right:-18px;
+  transform: rotate(180deg);
+  background-image:url('assets/floral2.svg');
+}
+
+.table-card h2{
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing:.02em;
+  margin:.1rem 0 .55rem;
+  color: var(--accent);
+  text-align:center;
+  text-transform: uppercase;
+}
+
+.table-card ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+  font-size:.98rem;
+}
+
+.table-card li{
+  padding:.22rem .2rem;
+  border-bottom: 1px dashed rgba(0,0,0,.06);
+  border-radius:8px;
+}
+
+.table-card li:last-child{ border-bottom: none; }
+
+.foot{
+  text-align:center;
+  color: var(--muted);
+  font-size:.95rem;
+  margin: 2rem 0 2.5rem;
+}
+
+/* Print-friendly */
+@media print{
+  .hero{padding: 1rem 0;}
+  .grid{grid-template-columns: repeat(3, 1fr); gap:.6rem;}
+  .table-card{break-inside: avoid; box-shadow:none; border:1px solid rgba(0,0,0,.12);}
+}
